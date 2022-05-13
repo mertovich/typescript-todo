@@ -7,21 +7,20 @@ type Props = {}
 
 const App: React.FC<Props> = (props: Props) => {
   const [todoList, setTodoList] = useState<string[]>([]);
-  const [toDo, setToDo] = useState<string>('');
 
-  const addToDo = (): void => {
-    setTodoList([...todoList, toDo]);
+  const addToDo = (todo: string): void => {
+    setTodoList([...todoList, todo]);
   }
 
-  const addTask = (task: string): void => {
-    setToDo(task);
+  const deleteTask = (task: string): void => {
+    setTodoList(todoList.filter(t => t !== task));
   }
 
   return (
     <div>
       <NavBar />
-      <FormToDo addToDo={addToDo} addTask={addTask} />
-      <ToDoList todoList={todoList} />
+      <FormToDo addToDo={addToDo} />
+      <ToDoList deleteTask={deleteTask} todoList={todoList} />
     </div>
   )
 }
