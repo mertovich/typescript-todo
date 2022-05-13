@@ -1,11 +1,12 @@
 import React from 'react'
-import { Container, Table } from 'react-bootstrap'
+import { Container, Table, Button } from 'react-bootstrap'
 
 interface Props {
-    todoList: string[]
+    todoList: string[],
+    deleteTask: (task: string) => void
 }
 
-const ToDoList: React.FC<Props> = ({todoList}) => {
+const ToDoList: React.FC<Props> = ({ todoList, deleteTask }) => {
     return (
         <div>
             <Container>
@@ -14,6 +15,7 @@ const ToDoList: React.FC<Props> = ({todoList}) => {
                         <tr>
                             <th>#</th>
                             <th>To Do</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -21,6 +23,7 @@ const ToDoList: React.FC<Props> = ({todoList}) => {
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{todo}</td>
+                                <td><Button onClick={() => deleteTask(todo)} variant="danger">Danger</Button></td>
                             </tr>
                         ))}
                     </tbody>
