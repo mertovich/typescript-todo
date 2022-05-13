@@ -23,7 +23,7 @@ const ToDoList: React.FC<Props> = ({ todoList, deleteTask }) => {
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{todo}</td>
-                                <td><Button onClick={() => deleteTask(todo)} variant="danger">Danger</Button></td>
+                                <td><Button onClick={() => deleteTask(todo)} variant="danger">Delete</Button></td>
                             </tr>
                         ))}
                     </tbody>
