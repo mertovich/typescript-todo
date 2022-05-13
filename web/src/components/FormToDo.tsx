@@ -1,23 +1,21 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { Container, Form, Button } from 'react-bootstrap'
 
 interface Props {
-    addToDo: () => void,
-    addTask: (task: string) => void
+    addToDo: (todo: string) => void,
 }
 
-const FormToDo: React.FC<Props> = ({addToDo, addTask}) => {
+const FormToDo: React.FC<Props> = ({ addToDo }) => {
     const [task, setTask] = useState<string>('');
 
     const hendleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setTask(e.target.value);
-        addTask(task);
     }
     return (
         <div>
-            <Container style={{display: 'flex'}} >
+            <Container style={{ display: 'flex' }} >
                 <Form.Control onChange={hendleChange} size="lg" type="text" placeholder="To Do" />
-                <Button onClick={addToDo} variant="success">Add</Button>
+                <Button onClick={() => addToDo(task)} variant="success">Add</Button>
             </Container>
         </div>
     )
